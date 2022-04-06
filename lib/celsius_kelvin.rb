@@ -8,6 +8,7 @@ module CelsiusKelvin
   COEFFICIENT = 273.15
 
   def self.convert(value, from:, to:)
+    check_params(from, to)
     (value +
       case from
       when :cel
@@ -16,5 +17,11 @@ module CelsiusKelvin
         - COEFFICIENT if to == :cel
       end
     ).round(2)
+  end
+
+  def self.check_params(from, to)
+    return if (from == :cel && to == :kel) || (from == :kel && to == :cel)
+
+    raise ArgumentError, "Expected convertation from kelvin to celsius or from celsius to kelvin"
   end
 end

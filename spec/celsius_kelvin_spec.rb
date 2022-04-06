@@ -13,5 +13,13 @@ RSpec.describe CelsiusKelvin do
     it "supports kelvin to celsius" do
       expect(CelsiusKelvin.convert(500.3, from: :kel, to: :cel)).to eq 227.15
     end
+
+    it "returns exception if first argument is not valid" do
+      expect { CelsiusKelvin.convert(500.3, from: :aaa, to: :cel) }.to raise_error(ArgumentError)
+    end
+
+    it "returns exception if second argument is not valid" do
+      expect { CelsiusKelvin.convert(500.3, from: :cel, to: :bbb) }.to raise_error(ArgumentError)
+    end
   end
 end
