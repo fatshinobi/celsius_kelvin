@@ -6,6 +6,14 @@ RSpec.describe CelsiusKelvin do
   end
 
   describe ".convert" do
+    it "supports coercing from and to params to symbols" do
+      expect(CelsiusKelvin.convert(30.3, from: "cel", to: "kel")).to eq 303.45
+    end
+
+    it "supports coercing amount to float" do
+      expect(CelsiusKelvin.convert("30.3", from: "cel", to: "kel")).to eq 303.45
+    end
+
     it "supports celsius to kelvin" do
       expect(CelsiusKelvin.convert(30.3, from: :cel, to: :kel)).to eq 303.45
     end

@@ -8,6 +8,8 @@ module CelsiusKelvin
   COEFFICIENT = 273.15
 
   def self.convert(value, from:, to:)
+    from, to, value = coerce_params(value, from, to)
+
     check_params(from, to)
     (value +
       case from
@@ -17,6 +19,10 @@ module CelsiusKelvin
         - COEFFICIENT if to == :cel
       end
     ).round(2)
+  end
+
+  def self.coerce_params(value, from, to)
+    [from.to_sym, to.to_sym, value.to_f]
   end
 
   def self.check_params(from, to)

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Fat Shinobi"]
   spec.email = ["r3mnik@gmail.com"]
 
-  spec.summary = "Convert celsius to kelvin there and back"
-  spec.description = "Convert celsius between kelvin"
+  spec.summary = "Convert celsius to kelvin and vice-versa"
+  spec.description = "Convert between celsius and kelvin"
   spec.homepage = "https://github.com/fatshinobi/celsius_kelvin"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"

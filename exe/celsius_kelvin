@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require "celsius_kelvin"
+
+args = {}
+OptionParser.new do |opts|
+  opts.banner = "Convert amount between celsius and kelvin\n\nUSAGE celsius_kelvin 5 --from cel --to kel\n\n"
+
+  opts.on("-f", "--from UNIT", "The unit of first amount argument")
+  opts.on("-t", "--to UNIT", "The unit to convent the amount to")
+end.parse!(into: args)
+
+original_amount = ARGV[0]
+
+errors = []
+errors << "amount parameter required" if original_amount.nil?
+errors << "--from parameter required" if args[:from].nil?
+errors << "--to parameter required" if args[:to].nil?
+
+raise errors.join(", ") if errors.any?
+
+puts CelsiusKelvin.convert(original_amount, from: args[:from], to: args[:to])
